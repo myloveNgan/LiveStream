@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Document</title>
+  <script src=""></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Hiển thị ngày và thứ</title>
+  <style>
+    .date-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    .selected-date {
+      font-weight: bold;
+      color: #157b45;
+      background-color: #ffe72c;
+      border-radius: 4px;
+      padding: 5px 10px;
+    }
+
+    .schedules-img img:hover {
+      background-color: #ffe72c;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      background-color: #ffe72c;
+      border-radius: 50%;
+      color: #ffe72c;
+    }
+
+    input[type="date"] {
+      color: #ffe72c;
+    }
+  </style>
+</head>
+
+<body onload="displayDates()">
+  <header>
+    <div class="header-container">
+      <div class="header-container-none">
+        <button style="border: none;" id="open-btn"><i class="fa-solid fa-bars"></i></button>
+      </div>
+      <div class="header-container-icon-a">
+        <a href=""><i class="fa-brands fa-facebook"></i></a>
+        <a href=""><i class="fa-brands fa-twitter"></i></a>
+        <a href=""><i class="fa-brands fa-youtube"></i></a>
+        <a href=""><i class="fa-brands fa-instagram"></i></a>
+      </div>
+
+      <div class="header-container-img">
+        <img src="./img/cropped-logo-2.png" alt="">
+      </div>
+
+      <div class="header-container-icon-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+  </header>
+
+  <div id="banner">
+    <div class="banner-contaner">
+      <ul class="main-menu">
+        <li><a href="">About Us</a></li>
+        <li><a href="">All Sports</a></li>
+        <li><a href="">Soccer</a></li>
+        <li><a href="">Tennis</a></li>
+        <li><a href="">Basketball</a></li>
+        <li><a href="">Esports</a></li>
+        <li><a href="">Handball</a></li>
+        <li><a href="">Rugby union</a></li>
+        <li class="menu-item-has-children"><a href="">More</a>
+          <ul class="sub-menu">
+            <li><a href="">Volleyball</a></li>
+            <li><a href="">Futsal</a></li>
+            <li><a href="">Darts</a></li>
+            <li><a href="">Volleyball</a></li>
+            <li><a href="">Futsal</a></li>
+            <li><a href="">Volleyball</a></li>
+            <li><a href="">Canadian</a></li>
+            <li><a href="">Badminton</a></li>
+            <li><a href="">Badminton</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="schedules">
+    <div class="schedules-img">
+      <img style="width: 40px;
+      height: 40px;
+      border-radius: 5px;transform: rotate(90deg);" src="/img/white_arrow.svg" alt="">
+    </div>
+    <div id="dates">
+
+    </div>
+
+    <div class="schedules-img">
+      <img style="width: 40px;
+      height: 40px;
+      border-radius: 5px;transform: rotate(-90deg); margin-right: 10px;" src="/img/white_arrow.svg" alt="">
+    </div>
+
+    <div class="schedules-2">
+      <button style="border: none; color: aliceblue; background-color: #157b45;" onclick="selectDateFromInput()">
+        <img src="/img/calendar_white_50.png" alt="">
+      </button>
+      <div class="schedules-2-items">
+        <input style="background-color: #157b45;" type="date" id="input-date">
+      </div>
+    </div>
+    <script>
+      document.getElementById('input-date').addEventListener('change', function () {
+        selectDateFromInput();
+      });
+    </script>
+
+  </div>
+
+  <div class="content">
+    <div class="content-container">
+      <div class="content-container-left">
+
+        <div> <!-- day la 1 noi dung -->
+          <div class="content-container-left-bg">
+            <img src="./img/soccer.png" alt="">
+            <p>English Premier League</p>
+          </div>
+
+          <div class="content-container-left-text">
+            <div class="name-sports">
+              <p>Newcastle United</p>
+              <p>Leicester City</p>
+            </div>
+
+            <div class="sports-time">
+              <p class="sports-time-t">19:00</p>
+
+              <div class="sport-link">
+                <a href="">Bet Now</a>
+                <p>Gamble Responsibly 18+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div> <!-- day la 1 noi dung -->
+          <div class="content-container-left-bg">
+            <img src="./img/soccer.png" alt="">
+            <p>English Premier League</p>
+          </div>
+
+          <div class="content-container-left-text">
+            <div class="name-sports">
+              <p>Newcastle United</p>
+              <p>Leicester City</p>
+            </div>
+
+            <div class="sports-time">
+              <p class="sports-time-t">19:00</p>
+
+              <div class="sport-link">
+                <a href="">Bet Now</a>
+                <p>Gamble Responsibly 18+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div> <!-- day la 1 noi dung -->
+          <div class="content-container-left-bg">
+            <img src="./img/soccer.png" alt="">
+            <p>English Premier League</p>
+          </div>
+
+          <div class="content-container-left-text">
+            <div class="name-sports">
+              <p>Newcastle United</p>
+              <p>Leicester City</p>
+            </div>
+
+            <div class="sports-time">
+              <p class="sports-time-t">19:00</p>
+
+              <div class="sport-link">
+                <a href="">Bet Now</a>
+                <p>Gamble Responsibly 18+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div> <!-- day la 1 noi dung -->
+          <div class="content-container-left-bg">
+            <img src="./img/soccer.png" alt="">
+            <p>English Premier League</p>
+          </div>
+
+          <div class="content-container-left-text">
+            <div class="name-sports">
+              <p>Newcastle United</p>
+              <p>Leicester City</p>
+            </div>
+
+            <div class="sports-time">
+              <p class="sports-time-t">19:00</p>
+
+              <div class="sport-link">
+                <a href="">Bet Now</a>
+                <p>Gamble Responsibly 18+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="content-container-right">
+        <ul>
+          <li class="box-children-2">
+            <a href="#" class="more-link-2">Select Sport <span class="arrow-2"></span></a>
+            <ul class="box-sub-menu-2">
+              <div class="center">
+                <input class="box-sub-menu-2-text" type="text" placeholder="Search Sport">
+              </div>
+              <div class="box-checkbox">
+                <div>
+                  <input type="checkbox"> Baseball
+                </div>
+                <div>
+                  <input type="checkbox"> AHL
+                </div>
+                <div>
+                  <input type="checkbox"> Boxing
+                </div>
+
+                <div>
+                  <input type="checkbox"> Basketball
+                </div>
+
+                <div>
+                  <input type="checkbox"> Soccer
+                </div>
+
+                <div>
+                  <input type="checkbox"> AHL
+                </div>
+              </div>
+            </ul>
+          </li>
+        </ul>
+
+
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="main-end">
+    <div class="main-end-container">
+      <div class="space-widget-title">
+        <span class="oke"></span>
+        <span>Please play responsibly</span>
+      </div>
+
+      <div>
+        <img src="./img/footer-18-plus.png" alt="">
+      </div>
+
+      <div>
+        <img src="./img/BeGambleAware_Black_PNG-300x41.png" alt="">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p> © Copyright 2023 LiveStream.fan | Powered by <span class="f-span">WordPress</span> | <span class="f-span">Mercury Theme</span></p>
+  </footer>
+
+  <button id="scroll-to-top-btn"><span>&uarr;</span></button>
+
+  <div id="overlay"></div>
+
+  <div id="box">
+    <button id="close-btn">&times;</button>
+
+    <div class="box-none">
+      <div class="box-img">
+        <img src="./img/cropped-logo-2.png" alt="">
+      </div>
+      <div class="box-banner">
+        <ul class="box-menu">
+          <li><a href="">About Us</a></li>
+          <li><a href="">All Sports</a></li>
+          <li><a href="">Soccer</a></li>
+          <li><a href="">Tennis</a></li>
+          <li><a href="">Basketball</a></li>
+          <li><a href="">Esports</a></li>
+          <li><a href="">Handball</a></li>
+          <li><a href="">Rugby union</a></li>
+          <li class="box-children">
+            <a href="#" class="more-link">More <span class="arrow"></span></a>
+            <ul class="box-sub-menu">
+              <li><a href="">Volleyball</a></li>
+              <li><a href="">Futsal</a></li>
+              <li><a href="">Darts</a></li>
+              <li><a href="">Volleyball</a></li>
+              <li><a href="">Futsal</a></li>
+              <li><a href="">Volleyball</a></li>
+              <li><a href="">Canadian</a></li>
+              <li><a href="">Badminton</a></li>
+              <li><a href="">Badminton</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box-footer">
+      <p>© Copyright 2023 LiveStream.fan <br>
+        Powered by WordPress | Mercury Theme</p>
+    </div>
+
+  </div>
+</body>
+<script>
+  // Lấy danh sách các menu item có sub-menu
+  const menuItems = document.querySelectorAll('.menu-item-has-children');
+
+  // Duyệt qua từng menu item
+  menuItems.forEach((menuItem) => {
+    // Lắng nghe sự kiện hover vào menu item
+    menuItem.addEventListener('mouseenter', () => {
+      // Thêm class "active" vào sub-menu của menu item được hover
+      const subMenu = menuItem.querySelector('.sub-menu');
+      subMenu.classList.add('active');
+    });
+
+    // Lắng nghe sự kiện hover ra khỏi menu item
+    menuItem.addEventListener('mouseleave', () => {
+      // Loại bỏ class "active" khỏi sub-menu của menu item
+      const subMenu = menuItem.querySelector('.sub-menu');
+      subMenu.classList.remove('active');
+    });
+  });
+
+
+  const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
+
+  scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 200) {
+      scrollToTopBtn.classList.add('show');
+    } else {
+      scrollToTopBtn.classList.remove('show');
+    }
+  });
+
+
+
+
+  // response
+  const openBtn = document.getElementById('open-btn');
+  const overlay = document.getElementById('overlay');
+  const box = document.getElementById('box');
+  const closeBtn = document.getElementById('close-btn');
+
+  openBtn.addEventListener('click', () => {
+    overlay.style.opacity = '1';
+    overlay.style.pointerEvents = 'auto';
+    box.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+    box.classList.remove('show');
+  });
+
+
+  // box
+
+  const moreLink = document.querySelector('.more-link');
+  const boxSubMenu = document.querySelector('.box-sub-menu');
+  const boxChildren = document.querySelector('.box-children');
+
+  moreLink.addEventListener('click', () => {
+    boxChildren.classList.toggle('open');
+  });
+
+
+  const moreLink2 = document.querySelector('.more-link-2');
+  const boxSubMenu2 = document.querySelector('.box-sub-menu-2');
+  const boxChildren2 = document.querySelector('.box-children-2');
+
+  moreLink2.addEventListener('click', () => {
+    boxChildren2.classList.toggle('open');
+  });
+
+
+  // lịch 
+  var currentDate = new Date();
+  var selectedDate = new Date();
+  var numDays = 9;
+
+  function handleResponsiveChange(mq) {
+  if (mq.matches) {
+    
+    numDays = 5;
+  } else {
+   
+    numDays = 9; 
+  }
+  
+  displayDates(); 
+}
+  
+
+  var mediaQuery = window.matchMedia('(max-width: 600px)');
+mediaQuery.addListener(handleResponsiveChange);
+handleResponsiveChange(mediaQuery);
+
+
+
+  function displayDates() {
+    var dates = getDatesInRange(selectedDate, numDays);
+
+    var output = '<div class="date-container">';
+    dates.forEach(function (date) {
+      output += generateDateElement(date);
+    });
+    output += '</div>';
+
+    document.getElementById('dates').innerHTML = output;
+  }
+
+  function getDatesInRange(startDate, numDays) {
+    var dates = [];
+    for (var i = -Math.floor(numDays / 2); i <= Math.floor(numDays / 2); i++) {
+      var date = new Date(startDate);
+      date.setDate(startDate.getDate() + i);
+      dates.push(date);
+    }
+    return dates;
+  }
+
+  function generateDateElement(date) {
+    var dateNumber = formatDate(date);
+    var weekday = formatWeekday(date);
+
+    var className = 'date';
+    if (date.getTime() === selectedDate.getTime()) {
+      className += ' selected-date';
+    }
+
+    var element = '<div class="' + className + '" onclick="selectDate(\'' + date.toISOString() + '\')">';
+    element += '<span class="date-number">' + dateNumber + '</span>';
+    element += '<span class="weekday">' + weekday + '</span>';
+    element += '</div>';
+
+    return element;
+  }
+
+  function formatDate(date) {
+    var options = { day: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
+  }
+
+  function formatWeekday(date) {
+    var options = { weekday: 'short' };
+    return date.toLocaleDateString('en-US', options);
+  }
+
+  function selectDate(dateString) {
+    selectedDate = new Date(dateString);
+    displayDates();
+  }
+
+  function selectDateFromInput() {
+    var inputDate = document.getElementById('input-date').value;
+    selectedDate = new Date(inputDate);
+    displayDates();
+  }
+
+
+
+
+
+
+</script>
+
+</html>
