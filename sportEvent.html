@@ -9,7 +9,6 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Roma</title>
-    <script src=""></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,7 +30,7 @@
             </div>
 
             <div class="header-container-icon-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <button id="open-btn-2" style="border: none;background-color: #fff;"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
     </header>
@@ -294,6 +293,33 @@
     </footer>
 
     <button id="scroll-to-top-btn"><span>&uarr;</span></button>
+  <!-- tìm kiếm -->
+<div id="overlay-2">
+    <div id="box-2">
+      <button id="close-btn-2">&times;</button>
+      <div class="thanhcong">
+         <input type="text" placeholder="Enter Keyword...">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+const openBtn2 = document.getElementById('open-btn-2');
+const overlay2 = document.getElementById('overlay-2');
+const box2 = document.getElementById('box-2');
+const closeBtn2 = document.getElementById('close-btn-2');
+
+openBtn2.addEventListener('click', () => {
+  overlay2.classList.add('active');
+  box2.classList.add('active');
+});
+
+closeBtn2.addEventListener('click', () => {
+  overlay2.classList.remove('active');
+  box2.classList.remove('active');
+});
+  </script>
 
     <div id="overlay"></div>
 
@@ -338,82 +364,6 @@
         </div>
 
     </div>
+    <script src="main.js"></script>
 </body>
-<script>
-    // Lấy danh sách các menu item có sub-menu
-    const menuItems = document.querySelectorAll('.menu-item-has-children');
-
-    // Duyệt qua từng menu item
-    menuItems.forEach((menuItem) => {
-        // Lắng nghe sự kiện hover vào menu item
-        menuItem.addEventListener('mouseenter', () => {
-            // Thêm class "active" vào sub-menu của menu item được hover
-            const subMenu = menuItem.querySelector('.sub-menu');
-            subMenu.classList.add('active');
-        });
-
-        // Lắng nghe sự kiện hover ra khỏi menu item
-        menuItem.addEventListener('mouseleave', () => {
-            // Loại bỏ class "active" khỏi sub-menu của menu item
-            const subMenu = menuItem.querySelector('.sub-menu');
-            subMenu.classList.remove('active');
-        });
-    });
-
-
-    const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 200) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
-
-
-
-
-    // response
-    const openBtn = document.getElementById('open-btn');
-    const overlay = document.getElementById('overlay');
-    const box = document.getElementById('box');
-    const closeBtn = document.getElementById('close-btn');
-
-    openBtn.addEventListener('click', () => {
-        overlay.style.opacity = '1';
-        overlay.style.pointerEvents = 'auto';
-        box.classList.add('show');
-    });
-
-    closeBtn.addEventListener('click', () => {
-        overlay.style.opacity = '0';
-        overlay.style.pointerEvents = 'none';
-        box.classList.remove('show');
-    });
-
-
-    // box
-
-    const moreLink = document.querySelector('.more-link');
-    const boxSubMenu = document.querySelector('.box-sub-menu');
-    const boxChildren = document.querySelector('.box-children');
-
-    moreLink.addEventListener('click', () => {
-        boxChildren.classList.toggle('open');
-    });
-
-
-
-
-
-</script>
-
 </html>

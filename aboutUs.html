@@ -9,7 +9,6 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
-    <script src=""></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,7 +30,7 @@
             </div>
 
             <div class="header-container-icon-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <button id="open-btn-3" style="border: none;background-color: #fff;"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
     </header>
@@ -40,7 +39,7 @@
         <div class="banner-contaner">
             <ul class="main-menu">
                 <li><a href="">About Us</a></li>
-                <li><a href="">All Sports</a></li>
+                <li><a href="/allSports.html">All Sports</a></li>
                 <li><a href="">Soccer</a></li>
                 <li><a href="">Tennis</a></li>
                 <li><a href="">Basketball</a></li>
@@ -113,9 +112,34 @@
     </footer>
 
     <button id="scroll-to-top-btn"><span>&uarr;</span></button>
+<!-- tìm kiếm -->
+<div id="overlay-3">
+    <div id="box-3">
+      <button id="close-btn-3">&times;</button>
+      <div class="thanhcong">
+         <input type="text" placeholder="Enter Keyword...">
+      </div>
+    </div>
+  </div>
 
-    <div id="overlay"></div>
+  <script>
+    const openBtn3 = document.getElementById('open-btn-3');
+    const overlay3 = document.getElementById('overlay-3');
+    const box3 = document.getElementById('box-3');
+    const closeBtn3 = document.getElementById('close-btn-3');
+    
+    openBtn3.addEventListener('click', () => {
+    overlay3.classList.add('active');
+    box3.classList.add('active');
+    });
+    
+    closeBtn3.addEventListener('click', () => {
+    overlay3.classList.remove('active');
+    box3.classList.remove('active');
+    });
+    </script>
 
+<div id="overlay"></div>
 <div id="box">
   <button id="close-btn">&times;</button>
   
@@ -157,82 +181,7 @@
   </div>
 
 </div>
+
+<script src="main.js"></script>
 </body>
-<script>
-    // Lấy danh sách các menu item có sub-menu
-    const menuItems = document.querySelectorAll('.menu-item-has-children');
-
-    // Duyệt qua từng menu item
-    menuItems.forEach((menuItem) => {
-        // Lắng nghe sự kiện hover vào menu item
-        menuItem.addEventListener('mouseenter', () => {
-            // Thêm class "active" vào sub-menu của menu item được hover
-            const subMenu = menuItem.querySelector('.sub-menu');
-            subMenu.classList.add('active');
-        });
-
-        // Lắng nghe sự kiện hover ra khỏi menu item
-        menuItem.addEventListener('mouseleave', () => {
-            // Loại bỏ class "active" khỏi sub-menu của menu item
-            const subMenu = menuItem.querySelector('.sub-menu');
-            subMenu.classList.remove('active');
-        });
-    });
-
-
-    const scrollToTopBtn = document.getElementById('scroll-to-top-btn');
-
-scrollToTopBtn.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-window.addEventListener('scroll', () => {
-  if (window.pageYOffset > 200) {
-    scrollToTopBtn.classList.add('show');
-  } else {
-    scrollToTopBtn.classList.remove('show');
-  }
-});
-
-
-
-
-// response
-const openBtn = document.getElementById('open-btn');
-const overlay = document.getElementById('overlay');
-const box = document.getElementById('box');
-const closeBtn = document.getElementById('close-btn');
-
-openBtn.addEventListener('click', () => {
-  overlay.style.opacity = '1';
-  overlay.style.pointerEvents = 'auto';
-  box.classList.add('show');
-});
-
-closeBtn.addEventListener('click', () => {
-  overlay.style.opacity = '0';
-  overlay.style.pointerEvents = 'none';
-  box.classList.remove('show');
-});
-
-
-// box
-
-const moreLink = document.querySelector('.more-link');
-const boxSubMenu = document.querySelector('.box-sub-menu');
-const boxChildren = document.querySelector('.box-children');
-
-moreLink.addEventListener('click', () => {
-  boxChildren.classList.toggle('open');
-});
-
-
-
-
-
-</script>
-
 </html>
